@@ -1,18 +1,29 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <h1>{{ message }}</h1>
+    <h2>Now accepting Dogecoin</h2>
+    <img
+      src="https://static.independent.co.uk/2021/02/04/14/what%20is%20dogecoin.jpg?width=982&height=726&auto=webp&quality=75"
+      alt=""
+    />
   </div>
 </template>
 
-<script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+<style>
+img {
+  width: 250px;
+  height: auto;
+}
+</style>
 
+<script>
 export default {
-  name: "Home",
-  components: {
-    HelloWorld,
+  data: function() {
+    return {
+      message: "Hot or Not Plant store!",
+    };
   },
+  created: function() {},
+  methods: {},
 };
 </script>
