@@ -7,14 +7,15 @@
       |
       <router-link to="/products">All Products</router-link>
       |
-      <router-link to="/signup">Signup</router-link>
+      <router-link v-if="!isLoggedIn()" to="/signup">Signup</router-link>
       |
-      <router-link to="/login">Login</router-link>
+      <router-link v-if="!isLoggedIn()" to="/login">Login</router-link>
       |
-      <router-link to="/logout">Logout</router-link>
+      <router-link v-if="isLoggedIn()" to="/logout">Logout</router-link>
       |
       <router-link to="/product/new">Create a Product</router-link>
     </div>
+    <div v-if="flashMessage" v-on:click="flashMessage = ''" class="alert alert-success">{{ flashMessage }}</div>
     <router-view />
   </div>
 </template>
@@ -41,3 +42,17 @@
   color: #42b983;
 }
 </style>
+<script>
+export default {
+  data: function() {
+    return {
+      flashMessage: "",
+    };
+  },
+  methods: {
+    isLoggedIn: function() {
+      return !!localStorage.getItem("jwt");
+    },
+  },
+};
+</script>

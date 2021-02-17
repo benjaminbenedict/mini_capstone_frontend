@@ -4,8 +4,8 @@
     <img v-bind:src="product.id" v-bind:alt="product.name" />
     <p>name: {{ product.name }}</p>
     <p>description: {{ product.description }}</p>
-    <router-link v-bind:to="`/products/${product.id}/edit`">Edit product</router-link>
-    <button v-on:click="destroyProduct(product)">Destroy product</button>
+    <router-link v-if="product.is_admin" v-bind:to="`/products/${product.id}/edit`">Edit product</router-link>
+    <button v-if="product.is_admin" v-on:click="destroyProduct(product)">Destroy product</button>
     <router-link to="/products">Back to all products</router-link>
   </div>
 </template>

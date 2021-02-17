@@ -4,6 +4,7 @@
     <form v-on:submit.prevent="createProduct()">
       <ul>
         <li v-for="error in errors" :key="error">{{ error }}</li>
+        <img v-if="status" v-bind:src="`https://http.cat/${status}`" v-on:click="status = ''" alt="" />
       </ul>
       Name:
       <input type="text" v-model="newProductName" />
@@ -27,6 +28,7 @@ export default {
       newProductPrice: "",
       newProductDescription: "",
       newProductSupplier_id: "",
+      status: "",
       errors: [],
     };
   },
@@ -48,6 +50,7 @@ export default {
         .catch(error => {
           console.log("products create error", error.response);
           this.errors = error.response.data.errors;
+          this.status = error.response.status;
         });
     },
   },
